@@ -30,4 +30,18 @@ public class testController {
     public void testThreadPoolExecutorwithName(){
         System.out.println(" current thread : " + Thread.currentThread().getName());
     }
+
+
+    //Created a custom threadPoolExecutor by implementing AysncConfigurer interface.
+    //This way, no need to create
+    //  First : custom ThreadPoolTaskExecutor
+    //  Second : custom ThreadPoolExecutor (Java) and use it with @Asyn (with and wihtout name)
+
+    // To avoid all this, Created a custom threadPoolExecutor by implementing AysncConfigurer interface and no need to
+    // explicilty use @Async to tell which threadPoolExecutor to use.
+    @Async
+    @GetMapping("/customThreadPoolExecutorWithAsyncConfigurer")
+    public void testThreadExecutorWithAsyncConfigurer(){
+        System.out.println(" current thread : " + Thread.currentThread().getName());
+    }
 }
