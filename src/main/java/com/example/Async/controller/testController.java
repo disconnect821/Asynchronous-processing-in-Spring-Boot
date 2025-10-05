@@ -14,4 +14,20 @@ public class testController {
     public void testThreadExecutor(){
         System.out.println(" current thread : " + Thread.currentThread().getName());
     }
+
+
+    //If using the custom ThreadPoolExecutor (JAVA) then , as Springboot default check for ThreadPoolTaskExecutor
+    //So if not found it will use the default one : SimpleAsyncTaskExecutor
+    @Async
+    @GetMapping("/customThreadPoolExecutor")
+    public void testThreadPoolExecutor(){
+        System.out.println(" current thread : " + Thread.currentThread().getName());
+    }
+
+    //So using this annotation with name of bean to use the custom executor
+    @Async("myCustomThreadPoolExecutor")
+    @GetMapping("/customThreadPoolExecutorWithName")
+    public void testThreadPoolExecutorwithName(){
+        System.out.println(" current thread : " + Thread.currentThread().getName());
+    }
 }
